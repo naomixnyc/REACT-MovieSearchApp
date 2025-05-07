@@ -7,7 +7,7 @@ import Form from "./components/Form";
 
 export default function App() {
   // Constant with your API Key
-  const apiKey = "98e3fb1f";
+  const apiKey = import.meta.env.VITE_OMDB_API_KEY;
 
   // State to hold movie data
   const [movie, setMovie] = useState(null);
@@ -18,6 +18,7 @@ export default function App() {
     const response = await fetch(
       `http://www.omdbapi.com/?apikey=${apiKey}&t=${searchTerm}`
     );
+    
     // Parse JSON response into a JavaScript object
     const data = await response.json();
     // Set the Movie state to the received data
